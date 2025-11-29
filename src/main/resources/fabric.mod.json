@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "wth",
+	"version": "${version}",
+	"name": "Welcome To Hawkins",
+	"description": "A Stranger Things inspired mini-game mod that allows the player to hunt other players as a Demogorgon.",
+	"authors": [
+		"Parzival"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/wth/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.parzival.wth.WelcomeToHawkins"
+		],
+		"fabric-datagen": [
+			"net.parzival.wth.WelcomeToHawkinsDataGenerator"
+		],
+      "client": [
+        "net.parzival.wth.WelcomeToHawkinsClient"
+      ]
+	},
+	"mixins": [
+		"wth.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.1",
+		"minecraft": "~1.21.10",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
