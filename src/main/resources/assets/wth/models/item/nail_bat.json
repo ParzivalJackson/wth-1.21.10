@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft/handheld",
+  "textures": {
+    "layer0": "wth:item/nail_bat"
+  }
+}
