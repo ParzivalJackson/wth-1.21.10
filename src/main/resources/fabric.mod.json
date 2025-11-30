@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "wth",
-	"version": "${version}",
+	"version": "0.0.1-1.21.10",
 	"name": "Welcome To Hawkins",
 	"description": "A Stranger Things inspired mini-game mod that allows the player to hunt other players as a Demogorgon.",
 	"authors": [
