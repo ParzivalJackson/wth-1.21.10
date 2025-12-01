@@ -3,29 +3,33 @@ package net.parzival.wth.index;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
-import net.minecraft.registry.*;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.parzival.wth.WelcomeToHawkins;
 
 public class WelcomeToHawkinsItems {
 
 
-    public static final Item NAIL_BAT = create("nail_bat");
-    public static final Item NAILS = create("nails");
 
+   public static final Item NAIL_BAT = registerItem("nail_bat",
+            new Item(new Item.Settings()
+                    .maxCount(1)
+                    .registryKey(RegistryKey.of(RegistryKeys.ITEM,
+                            Identifier.of(WelcomeToHawkins.MOD_ID, "nail_bat")))
+            ));
 
-    private static Item create(String name) {
-        // Pre-set registry key (fixes the 1.21.10 null-ID crash)
-        RegistryKey<Item> key = RegistryKey.of(
-                RegistryKeys.ITEM,
-                Identifier.of(WelcomeToHawkins.MOD_ID, name)
-        );
+    public static final Item NAILS = registerItem("nails",
+            new Item(new Item.Settings()
+                    .maxCount(64)
+                    .registryKey(RegistryKey.of(RegistryKeys.ITEM,
+                            Identifier.of(WelcomeToHawkins.MOD_ID, "nails")))
+            ));
 
-        return new Item(new Item.Settings().registryKey(key));
-    }
-
-    private static void registerItem(String name, Item item) {
-        Registry.register(
+    private static Item registerItem(String name, Item item) {
+        return Registry.register(
                 Registries.ITEM,
                 Identifier.of(WelcomeToHawkins.MOD_ID, name),
                 item
@@ -33,9 +37,6 @@ public class WelcomeToHawkinsItems {
     }
 
     public static void registerWelcomeToHawkinsItems() {
-        registerItem("nail_bat", NAIL_BAT);
-        registerItem("nails", NAILS);
-
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.add(NAIL_BAT);
             entries.add(NAILS);
